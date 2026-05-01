@@ -12,7 +12,7 @@ A CLI-based trading bot that places **MARKET** and **LIMIT** orders on Binance F
 
 ```bash
 git clone <repository-url>
-cd trading_bot
+cd binance-futures-trading-bot
 ```
 
 ### 2. Create and activate virtual environment
@@ -38,7 +38,6 @@ Create a `.env` file in the project root:
 ```
 API_KEY=your_binance_testnet_api_key
 API_SECRET=your_binance_testnet_api_secret
-BASE_URL=https://testnet.binancefuture.com
 ```
 
 > Get credentials from: https://testnet.binancefuture.com
@@ -124,67 +123,92 @@ Order cancelled by user.
 ### MARKET Order
 
 ```
-==================================================
-  Placing MARKET order:
-  Symbol:   BTCUSDT
-  Side:     BUY
-  Quantity: 0.01
-==================================================
 
-Confirm order? (y/n): y
+==================================================
+  Order Summary (MARKET)
+==================================================
+  Symbol:     BTCUSDT
+  Side:       BUY
+  Type:       MARKET
+  Quantity:   0.01
+==================================================
+  Confirm order? (y/n): y
 
 --------------------------------------------------
-  Order Response:
-  Order ID:     13096986994
-  Status:       NEW
-  Executed Qty: 0.0100
-  Avg Price:    0.00
+  Order Executed Successfully
+--------------------------------------------------
+  Order ID:       13096986994
+  Status:         NEW
+  Symbol:         BTCUSDT
+  Side:           BUY
+  Type:           MARKET
+  Orig Qty:       0.0100
+  Executed Qty:   0.0000
+  Avg Price:      0.00
 --------------------------------------------------
   ✓ Order placed successfully
+
 ```
 
 ### LIMIT Order
 
 ```
-==================================================
-  Placing LIMIT order:
-  Symbol:   ETHUSDT
-  Side:     SELL
-  Quantity: 0.1
-  Price:    3000.0
-==================================================
 
-Confirm order? (y/n): y
+==================================================
+  Order Summary (LIMIT)
+==================================================
+  Symbol:     ETHUSDT
+  Side:       SELL
+  Type:       LIMIT
+  Quantity:   0.1
+  Price:      3000.0
+==================================================
+  Confirm order? (y/n): y
 
 --------------------------------------------------
-  Order Response:
-  Order ID:     8676848095
-  Status:       NEW
-  Executed Qty: 0.000
-  Avg Price:    0.00
+  Order Executed Successfully
+--------------------------------------------------
+  Order ID:       8676848095
+  Status:         NEW
+  Symbol:         ETHUSDT
+  Side:           SELL
+  Type:           LIMIT
+  Orig Qty:       0.100
+  Executed Qty:   0.000
+  Avg Price:      0.00
+  Time In Force:  GTC
+  Limit Price:    3000.00
 --------------------------------------------------
   ✓ Order placed successfully
+
 ```
 
 ### Cancelled Order
 
 ```
-==================================================
-  Placing MARKET order:
-  Symbol:   BTCUSDT
-  Side:     BUY
-  Quantity: 0.01
-==================================================
 
-Confirm order? (y/n): n
+==================================================
+  Order Summary (MARKET)
+==================================================
+  Symbol:     BTCUSDT
+  Side:       BUY
+  Type:       MARKET
+  Quantity:   0.01
+==================================================
+  Confirm order? (y/n): n
 
-Order cancelled by user.
+  Order cancelled by user.
+
 ```
 
 ### Example Error
 
 ```
-✗ API Error [-1121]: Invalid symbol.
+
+--------------------------------------------------
+  ✗ Order failed: Invalid symbol. (code: -1121)
+--------------------------------------------------
+
 ```
 
 ---
